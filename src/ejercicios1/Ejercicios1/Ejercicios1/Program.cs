@@ -10,6 +10,15 @@ namespace Ejercicios1
     {
         static void Main(string[] args)
         {
+            Ejercicio1();
+
+            Ejercicio2();
+
+            Console.ReadKey();
+        }
+
+        private static void Ejercicio1()
+        {
             // Opción 1.
             int resultado = 0;
             for (int i = 1; i <= 10; i++)
@@ -23,21 +32,36 @@ namespace Ejercicios1
             }
 
             // Opción 2.
-            for (int i = 1; i <= 10; i++)
+            resultado = 0;
+            int j = 1;
+            while (j <= 10)
             {
-                if (i != 4 && i != 5)
+                if (j < 4 || j > 5)
                 {
-                    Console.WriteLine(i);
+                    resultado = resultado + j;
+                    Console.WriteLine(resultado);
                 }
-            }
 
-            // Opción 3.
+                j++;
+            }
+        }
+
+        private static void Ejercicio2()
+        {
+            // Opción 1.
             for (int i = 2; i <= 10; i = i + 2)
             {
                 Console.WriteLine(i);
             }
 
-            Console.ReadKey();
+            // Opción 2.
+            for (int i = 1; i <= 10; i++)
+            {
+                // Si no sobra nada al dividir el numero entre dos
+                // quiere decir que el numero es par.
+                if (i % 2 == 0)
+                    Console.WriteLine(i);
+            }
         }
     }
 }
