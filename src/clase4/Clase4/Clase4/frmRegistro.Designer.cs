@@ -42,11 +42,13 @@
             this.lblCantidad = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblSueldos = new System.Windows.Forms.Label();
+            this.txtIdentificacion = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnPrincipal
             // 
-            this.btnPrincipal.Location = new System.Drawing.Point(355, 366);
+            this.btnPrincipal.Location = new System.Drawing.Point(355, 418);
             this.btnPrincipal.Name = "btnPrincipal";
             this.btnPrincipal.Size = new System.Drawing.Size(150, 39);
             this.btnPrincipal.TabIndex = 0;
@@ -58,7 +60,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label1.Location = new System.Drawing.Point(12, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 2;
@@ -66,7 +68,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(16, 74);
+            this.txtNombre.Location = new System.Drawing.Point(16, 135);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(186, 20);
             this.txtNombre.TabIndex = 3;
@@ -77,7 +79,7 @@
             this.cbSexo.Items.AddRange(new object[] {
             "Masculino",
             "Femenino"});
-            this.cbSexo.Location = new System.Drawing.Point(16, 137);
+            this.cbSexo.Location = new System.Drawing.Point(16, 198);
             this.cbSexo.Name = "cbSexo";
             this.cbSexo.Size = new System.Drawing.Size(186, 21);
             this.cbSexo.TabIndex = 4;
@@ -86,7 +88,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 110);
+            this.label2.Location = new System.Drawing.Point(12, 171);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 20);
             this.label2.TabIndex = 5;
@@ -94,7 +96,7 @@
             // 
             // txtFechaNacimiento
             // 
-            this.txtFechaNacimiento.Location = new System.Drawing.Point(16, 203);
+            this.txtFechaNacimiento.Location = new System.Drawing.Point(16, 264);
             this.txtFechaNacimiento.Name = "txtFechaNacimiento";
             this.txtFechaNacimiento.Size = new System.Drawing.Size(186, 20);
             this.txtFechaNacimiento.TabIndex = 6;
@@ -103,7 +105,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 176);
+            this.label3.Location = new System.Drawing.Point(12, 237);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(157, 20);
             this.label3.TabIndex = 7;
@@ -115,7 +117,7 @@
             this.chkEmpleado.Checked = true;
             this.chkEmpleado.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkEmpleado.Location = new System.Drawing.Point(16, 247);
+            this.chkEmpleado.Location = new System.Drawing.Point(16, 308);
             this.chkEmpleado.Name = "chkEmpleado";
             this.chkEmpleado.Size = new System.Drawing.Size(130, 24);
             this.chkEmpleado.TabIndex = 8;
@@ -135,7 +137,7 @@
             // 
             // txtSueldo
             // 
-            this.txtSueldo.Location = new System.Drawing.Point(16, 311);
+            this.txtSueldo.Location = new System.Drawing.Point(16, 372);
             this.txtSueldo.Mask = "000,000";
             this.txtSueldo.Name = "txtSueldo";
             this.txtSueldo.Size = new System.Drawing.Size(186, 20);
@@ -146,7 +148,7 @@
             // 
             this.lblSueldo.AutoSize = true;
             this.lblSueldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSueldo.Location = new System.Drawing.Point(12, 288);
+            this.lblSueldo.Location = new System.Drawing.Point(12, 349);
             this.lblSueldo.Name = "lblSueldo";
             this.lblSueldo.Size = new System.Drawing.Size(59, 20);
             this.lblSueldo.TabIndex = 11;
@@ -182,11 +184,30 @@
             this.lblSueldos.Text = "0.00";
             this.lblSueldos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // txtIdentificacion
+            // 
+            this.txtIdentificacion.Location = new System.Drawing.Point(16, 74);
+            this.txtIdentificacion.Name = "txtIdentificacion";
+            this.txtIdentificacion.Size = new System.Drawing.Size(186, 20);
+            this.txtIdentificacion.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 20);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Identificacion";
+            // 
             // frmRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 426);
+            this.ClientSize = new System.Drawing.Size(517, 469);
+            this.Controls.Add(this.txtIdentificacion);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.lblSueldos);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblCantidad);
@@ -224,6 +245,8 @@
         private System.Windows.Forms.Label lblCantidad;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblSueldos;
+        private System.Windows.Forms.TextBox txtIdentificacion;
+        private System.Windows.Forms.Label label5;
     }
 }
 

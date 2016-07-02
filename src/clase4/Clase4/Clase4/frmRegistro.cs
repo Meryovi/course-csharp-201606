@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Clase4.Clases;
+using ProyectoCSharp.Libreria.Modelos;
+using ProyectoCSharp.Libreria.Repositorios;
 
 namespace Clase4
 {
@@ -10,12 +11,18 @@ namespace Clase4
         // Esta Lista almacena las personas registradas
         public List<Persona> Personas { get; set; }
 
+        // Repositorio de personas
+        public RepositorioPersonasADO Repositorio { get; set; }
+
         public frmRegistro()
         {
             InitializeComponent();
 
             // Inicializamos la lista en blanco.
-            Personas = new List<Persona>();
+            Repositorio = new RepositorioPersonasADO();
+            Personas = Repositorio.BuscarPersonas();
+
+            ContarPersonasSueldos();
         }
 
         /// <summary>
@@ -46,12 +53,14 @@ namespace Clase4
             }
 
             // Copiamos los campos del formulario hacia la persona.
+            persona.Identificacion = txtIdentificacion.Text;
             persona.Nombre = txtNombre.Text;
             persona.Sexo = cbSexo.Text;
             persona.FechaNacimiento = txtFechaNacimiento.Value;
 
             // Agregamos la persona a la lista de personas.
             Personas.Add(persona);
+            Repositorio.RegistrarPersona(persona);
 
             // Limpiamos los campos y calculamos los valores que mostramos.
             LimpiarCampos();
@@ -86,7 +95,7 @@ namespace Clase4
                 {
                     // La sentencia "as" convierte un objeto en un tipo COMPATIBLE.
                     // Se recomienda validar con "is" antes de convertir.
-                    sueldoTotal += (persona as Empleado).Sueldo;
+                    sueldoTotal += (persona as Empleado).Sueldo.GetValueOrDefault();
                 }
             }
 

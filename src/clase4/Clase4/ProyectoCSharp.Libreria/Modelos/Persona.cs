@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clase4.Clases
+namespace ProyectoCSharp.Libreria.Modelos
 {
     /// <summary>
     /// Representa una persona
     /// </summary>
     public class Persona
     {
+        /// <summary>
+        /// Obtiene o establece la identificación de la persona
+        /// </summary>
+        public string Identificacion { get; set; }
+
         /// <summary>
         /// Obtiene o establece el nombre de la persona
         /// </summary>
@@ -25,6 +30,16 @@ namespace Clase4.Clases
         /// Obtiene o establece la fecha de nacimiento de la persona
         /// </summary>
         public DateTime FechaNacimiento { get; set; }
+
+        /// <summary>
+        /// Obtiene o establece un valor que indica si la persona es empleado
+        /// </summary>
+        public bool EsEmpleado { get; protected set; }
+
+        /// <summary>
+        /// Obtiene o establece el sueldo de la persona
+        /// </summary>
+        public double? Sueldo { get; set; }
 
         /// <summary>
         /// Obtiene la edad actual de la persona
