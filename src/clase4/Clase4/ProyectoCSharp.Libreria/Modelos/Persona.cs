@@ -34,7 +34,7 @@ namespace ProyectoCSharp.Libreria.Modelos
         /// <summary>
         /// Obtiene o establece un valor que indica si la persona es empleado
         /// </summary>
-        public bool EsEmpleado { get; protected set; }
+        public bool EsEmpleado { get; set; }
 
         /// <summary>
         /// Obtiene o establece el sueldo de la persona

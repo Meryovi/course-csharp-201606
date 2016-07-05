@@ -9,10 +9,10 @@ namespace Clase4
     public partial class frmRegistro : Form
     {
         // Esta Lista almacena las personas registradas
-        public List<Persona> Personas { get; set; }
+        public List<Persona> Personas { get; private set; }
 
         // Repositorio de personas
-        public RepositorioPersonasADO Repositorio { get; set; }
+        public RepositorioPersonasADO Repositorio { get; private set; }
 
         public frmRegistro()
         {
@@ -32,30 +32,14 @@ namespace Clase4
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            Persona persona;
-
-            // Si el check de que es empleado esta marcado
-            if (chkEmpleado.Checked)
-            {
-                // Creamos una instancia de la clase empleado
-                // y le asignamos el sueldo de la persona.
-                var empleado = new Empleado();
-
-                empleado.Sueldo = Convert.ToDouble(txtSueldo.Text);
-                
-                // Pasamos el valor a la variable persona.
-                persona = empleado;
-            }
-            else
-            {
-                // Si no es un empleado, creamos una persona base.
-                persona = new Persona();
-            }
+            var persona = new Persona();
 
             // Copiamos los campos del formulario hacia la persona.
             persona.Identificacion = txtIdentificacion.Text;
             persona.Nombre = txtNombre.Text;
             persona.Sexo = cbSexo.Text;
+            persona.EsEmpleado = chkEmpleado.Checked;
+            persona.Sueldo = Convert.ToDouble(txtSueldo.Text);
             persona.FechaNacimiento = txtFechaNacimiento.Value;
 
             // Agregamos la persona a la lista de personas.
@@ -65,12 +49,6 @@ namespace Clase4
             // Limpiamos los campos y calculamos los valores que mostramos.
             LimpiarCampos();
             ContarPersonasSueldos();
-
-            /*
-            MessageBox.Show(
-                "Hola " + persona.Nombre + ", tiene " + persona.Edad + " anhos",
-                "Mensaje");
-            */
         }
 
         /// <summary>
@@ -91,11 +69,11 @@ namespace Clase4
             {
                 // Si es un empleado.
                 // Se valida si es una instancia de Empleado utilizando la sentencia "is".
-                if (persona is Empleado)
+                if (persona.EsEmpleado)
                 {
                     // La sentencia "as" convierte un objeto en un tipo COMPATIBLE.
                     // Se recomienda validar con "is" antes de convertir.
-                    sueldoTotal += (persona as Empleado).Sueldo.GetValueOrDefault();
+                    sueldoTotal += persona.Sueldo.GetValueOrDefault();
                 }
             }
 
@@ -110,6 +88,7 @@ namespace Clase4
         /// </summary>
         private void LimpiarCampos()
         {
+            txtIdentificacion.Text = "";
             txtNombre.Text = "";
             cbSexo.Text = "";
             txtSueldo.Text = "";

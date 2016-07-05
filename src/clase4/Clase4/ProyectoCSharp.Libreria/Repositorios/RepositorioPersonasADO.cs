@@ -7,8 +7,17 @@ using ProyectoCSharp.Libreria.Modelos;
 
 namespace ProyectoCSharp.Libreria.Repositorios
 {
+    /// <summary>
+    /// Gestiona la información de las personas en la base de datos
+    /// a través de la tecnología ADO
+    /// </summary>
     public class RepositorioPersonasADO
     {
+        /// <summary>
+        /// Registra una nueva persona en el sistema
+        /// </summary>
+        /// <param name="persona">Persona a registrar</param>
+        /// <returns>Valor que indica si la persona fue registrada</returns>
         public bool RegistrarPersona(Persona persona)
         {
             string conexionStr = ConfigurationManager
@@ -45,8 +54,14 @@ namespace ProyectoCSharp.Libreria.Repositorios
             return false;
         }
 
+        /// <summary>
+        /// Busca todas las personas registradas en el sistema
+        /// </summary>
+        /// <returns>Lista con las personas registradas</returns>
         public List<Persona> BuscarPersonas()
         {
+            // Leemos la cadena de conexión del archivo de configuración de
+            // la aplicación.
             string conexionStr = ConfigurationManager
                 .ConnectionStrings["cursocsharpdb"].ConnectionString;
 
@@ -66,20 +81,15 @@ namespace ProyectoCSharp.Libreria.Repositorios
                 // se utiliza el método ExecuteReader.
                 var dataReader = comando.ExecuteReader();
 
+                // Leemos cada registro retornado de la base de datos.
                 while (dataReader.Read())
                 {
-                    bool esEmpleado = (bool)dataReader["EsEmpleado"];
-
-                    Persona persona;
-
-                    if (esEmpleado)
-                        persona = new Empleado();
-                    else
-                        persona = new Persona();
+                    var persona = new Persona();
 
                     persona.Identificacion = (string)dataReader["Identificacion"];
                     persona.Nombre = (string)dataReader["Nombre"];
                     persona.Sexo = (string)dataReader["Sexo"];
+                    persona.EsEmpleado = (bool)dataReader["EsEmpleado"];
                     persona.FechaNacimiento = (DateTime)dataReader["FechaNacimiento"];
 
                     if (dataReader["Sueldo"] != DBNull.Value)
@@ -87,6 +97,9 @@ namespace ProyectoCSharp.Libreria.Repositorios
 
                     personas.Add(persona);
                 }
+
+                // Importante: Cerramos el DataReader.
+                dataReader.Close();
             }
 
             return personas;
