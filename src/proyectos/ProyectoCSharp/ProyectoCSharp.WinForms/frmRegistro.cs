@@ -19,7 +19,7 @@ namespace Clase4
             InitializeComponent();
 
             // Inicializamos la lista en blanco.
-            Repositorio = new RepositorioPersonasADO();
+            Repositorio = new RepositorioPersonasEF();
             Personas = Repositorio.BuscarPersonas();
 
             ContarPersonasSueldos();
@@ -39,8 +39,10 @@ namespace Clase4
             persona.Nombre = txtNombre.Text;
             persona.Sexo = cbSexo.Text;
             persona.EsEmpleado = chkEmpleado.Checked;
-            persona.Sueldo = Convert.ToDouble(txtSueldo.Text);
             persona.FechaNacimiento = txtFechaNacimiento.Value;
+
+            if (!String.IsNullOrEmpty(txtSueldo.Text))
+                persona.Sueldo = Convert.ToDecimal(txtSueldo.Text);
 
             // Agregamos la persona a la lista de personas.
             Personas.Add(persona);
@@ -62,7 +64,7 @@ namespace Clase4
             // Mas abajo sumamos el total de sueldo de todas las personas
             // que son empleados.
 
-            double sueldoTotal = 0;
+            decimal sueldoTotal = 0;
 
             // Recorremos todas las personas que hemos agregado a la lista.
             foreach (var persona in Personas)

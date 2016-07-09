@@ -9,11 +9,11 @@ namespace ProyectoCSharp.Libreria.Modelos
     /// <summary>
     /// Representa un empleado, el cual es una extension de una persona
     /// </summary>
-    public class Empleado : Persona
+    public class Empleado
     {
         public Empleado()
         {
-            EsEmpleado = true;
+
         }
     }
 }

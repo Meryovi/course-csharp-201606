@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace ProyectoCSharp.Libreria.Modelos
         /// <summary>
         /// Obtiene o establece la identificación de la persona
         /// </summary>
+        [Key]
         public string Identificacion { get; set; }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace ProyectoCSharp.Libreria.Modelos
         /// <summary>
         /// Obtiene o establece el sueldo de la persona
         /// </summary>
-        public double? Sueldo { get; set; }
+        public decimal? Sueldo { get; set; }
 
         /// <summary>
         /// Obtiene la edad actual de la persona

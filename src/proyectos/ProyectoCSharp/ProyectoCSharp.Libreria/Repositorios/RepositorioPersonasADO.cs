@@ -93,7 +93,7 @@ namespace ProyectoCSharp.Libreria.Repositorios
                     persona.FechaNacimiento = (DateTime)dataReader["FechaNacimiento"];
 
                     if (dataReader["Sueldo"] != DBNull.Value)
-                        persona.Sueldo = Convert.ToDouble(dataReader["Sueldo"]);
+                        persona.Sueldo = Convert.ToDecimal(dataReader["Sueldo"]);
 
                     personas.Add(persona);
                 }
