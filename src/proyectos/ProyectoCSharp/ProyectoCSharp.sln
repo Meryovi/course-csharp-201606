@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clase4", "Clase4\Clase4.csproj", "{9BE6ABE1-A3CD-48D1-8126-CF7BDDE8B675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoCSharp.WinForms", "ProyectoCSharp.WinForms\ProyectoCSharp.WinForms.csproj", "{9BE6ABE1-A3CD-48D1-8126-CF7BDDE8B675}"
 	ProjectSection(ProjectDependencies) = postProject
 		{D541F77F-186B-4DE2-A101-9A3F601BD6EE} = {D541F77F-186B-4DE2-A101-9A3F601BD6EE}
 	EndProjectSection
