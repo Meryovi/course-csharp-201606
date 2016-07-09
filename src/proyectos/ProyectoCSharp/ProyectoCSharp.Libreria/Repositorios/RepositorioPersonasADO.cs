@@ -11,7 +11,7 @@ namespace ProyectoCSharp.Libreria.Repositorios
     /// Gestiona la información de las personas en la base de datos
     /// a través de la tecnología ADO
     /// </summary>
-    public class RepositorioPersonasADO
+    public class RepositorioPersonasADO : IRepositorioPersonas
     {
         /// <summary>
         /// Registra una nueva persona en el sistema

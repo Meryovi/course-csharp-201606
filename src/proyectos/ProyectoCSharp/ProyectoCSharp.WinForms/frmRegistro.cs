@@ -12,7 +12,7 @@ namespace Clase4
         public List<Persona> Personas { get; private set; }
 
         // Repositorio de personas
-        public RepositorioPersonasADO Repositorio { get; private set; }
+        public IRepositorioPersonas Repositorio { get; private set; }
 
         public frmRegistro()
         {
