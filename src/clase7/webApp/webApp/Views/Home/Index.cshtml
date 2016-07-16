@@ -1,0 +1,62 @@
+﻿@model webApp.Models.Persona
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        /* En este curso utilizaremos Bootstrap */
+        h1 {
+            background-color: lightgray;
+        }
+        button {
+            width: 400px;
+        }
+        p {
+            padding: 5px;
+        }
+        .azul {
+            color: blue;
+        }
+        #botones {
+            border-top: 1px dashed #999999;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="azul">Esta es mi pagina MVC</h1>
+        <p class="azul">Esta es mi primera pagina en MVC. Hola @Model.Nombre @Model.Apellido.</p>
+        
+        <p>Hoy es @DateTime.Now.ToString()</p>
+        
+        <div id="botones">
+            <button id="btn-accion" type="button">Haz clic aquí</button>
+            <button id="btn-accion-jq" type="button">Haz clic aquí</button>
+        </div>
+
+        <a href="/Home/Registrar">Registrar persona</a>
+    </div>
+    <script src="~/scripts/jquery-3.1.0.min.js"></script>
+    <script>
+        // JavaScript clasico o "vanilla".
+        var btnAccion = document.getElementById('btn-accion');
+        btnAccion.innerHTML = "Clic!";
+
+        btnAccion.onclick = function () {
+            btnAccion.remove();
+        };
+
+        // jQuery.
+        var $btnAccion = $('#btn-accion-jq');
+        $btnAccion.text('Click!');
+
+        $btnAccion.click(function () {
+            $btnAccion.fadeOut('slow');
+        });
+    </script>
+</body>
+</html>

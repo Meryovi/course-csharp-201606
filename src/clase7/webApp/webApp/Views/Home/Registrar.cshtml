@@ -1,0 +1,52 @@
+﻿@model webApp.Models.Persona
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrar</title>
+    <style>
+        .mensaje {
+            background-color: #999;
+            padding: 5px;
+            margin: 10px;
+            border: 1px solid #666;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+
+        @if (ViewBag.Mensaje != null)
+        {
+            <div class="mensaje">
+                <p>@ViewBag.Mensaje</p>
+            </div>
+        }
+
+        @using (Html.BeginForm())
+        {
+
+            <div>
+                @Html.LabelFor(m => m.Nombre)
+                @Html.TextBoxFor(m => m.Nombre)
+                @Html.ValidationMessageFor(m => m.Nombre)
+            </div>
+
+            <div>
+                @Html.LabelFor(m => m.Apellido)
+                @Html.TextBoxFor(m => m.Apellido)
+                @Html.ValidationMessageFor(m => m.Apellido)
+            </div>
+
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
+
+        }
+
+    </div>
+</body>
+</html>
