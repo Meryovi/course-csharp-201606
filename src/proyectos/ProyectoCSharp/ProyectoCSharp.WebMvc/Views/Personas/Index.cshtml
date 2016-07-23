@@ -1,0 +1,71 @@
+﻿@model IEnumerable<ProyectoCSharp.Libreria.Modelos.Persona>
+
+@{
+    ViewBag.Title = "Listado de Personas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaNacimiento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EsEmpleado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sueldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @item.FechaNacimiento.ToString("dd/MM/yyyy")
+        </td>
+        <td>
+            @(item.EsEmpleado ? "Si" : "No")
+        </td>
+        <td>
+            @if (item.Sueldo.HasValue)
+            {
+                @item.Sueldo.Value.ToString("N2")
+            }
+            else
+            {
+                @:N/A
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Identificacion }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Identificacion }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.Identificacion })
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Registrar Nueva", "Create", null, new { @class = "btn btn-default" })
+</p>

@@ -16,6 +16,7 @@ namespace ProyectoCSharp.Libreria.Modelos
         /// Obtiene o establece la identificación de la persona
         /// </summary>
         [Key]
+        [Display(Name = "Identificación")]
         public string Identificacion { get; set; }
 
         /// <summary>
@@ -31,11 +32,13 @@ namespace ProyectoCSharp.Libreria.Modelos
         /// <summary>
         /// Obtiene o establece la fecha de nacimiento de la persona
         /// </summary>
+        [Display(Name = "Fecha de Nacimiento")]
         public DateTime FechaNacimiento { get; set; }
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la persona es empleado
         /// </summary>
+        [Display(Name = "Es Empleado?")]
         public bool EsEmpleado { get; set; }
 
         /// <summary>
