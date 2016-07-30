@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ProyectoCSharp.Libreria.Modelos;
 using ProyectoCSharp.Libreria.Repositorios;
 
 namespace ProyectoCSharp.WebMvc.Controllers
@@ -30,7 +31,9 @@ namespace ProyectoCSharp.WebMvc.Controllers
         public ActionResult Index()
         {
             // Buscamos las personas registradas.
-            var personas = repositorioPersonas.BuscarPersonas();
+            var personas = repositorioPersonas
+                .BuscarPersonas()
+                .OrderByDescending(persona => persona.Sueldo.GetValueOrDefault());
 
             // Y las cargamos en la vista.
             return View(personas);
@@ -49,67 +52,62 @@ namespace ProyectoCSharp.WebMvc.Controllers
         // GET: Personas/Create
         public ActionResult Create()
         {
-            return View();
+            var persona = new Persona();
+
+            persona.EsEmpleado = true;
+            persona.FechaNacimiento = DateTime.Now;
+
+            return View(persona);
         }
 
         // POST: Personas/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Persona persona)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                // Si la información recibida desde la vista es correcta,
+                // (ModelState.IsValid), entonces registra la persona.
+                repositorioPersonas.RegistrarPersona(persona);
 
+                // Luego de registrar a la persona, envía al usuario hacia la vista
+                // Index (listado de personas registradas).
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            // En caso de que la información recibida no fuera valida, carga
+            // nuevamente la vista con la información recibida.
+            return View(persona);
         }
 
         // GET: Personas/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var persona = repositorioPersonas.BuscarPersona(id);
+            
+            return View(persona);
         }
 
         // POST: Personas/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, Persona persona)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                repositorioPersonas.EditarPersona(persona);
 
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(persona);
         }
 
         // GET: Personas/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
-        }
+            repositorioPersonas.EliminarPersona(id);
 
-        // POST: Personas/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
     }
 }

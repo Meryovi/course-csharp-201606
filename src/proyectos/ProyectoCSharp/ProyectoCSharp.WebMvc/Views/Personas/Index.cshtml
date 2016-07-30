@@ -57,15 +57,49 @@
             @Html.DisplayFor(modelItem => item.Edad)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Identificacion }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.Identificacion }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.Identificacion })
+            @Html.ActionLink("Editar", "Edit", new { id = item.Identificacion }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.Identificacion }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Identificacion }, new { @class = "lnk-delete" })
         </td>
     </tr>
 }
+
+    <tr>
+        <td colspan="4">
+            <strong>
+                @Model.Count() personas registradas
+            </strong>
+        </td>
+        <td colspan="3">
+            <strong>
+                @Model.Sum(p => p.Sueldo.GetValueOrDefault()).ToString("N2")
+            </strong>
+        </td>
+    </tr>
 
 </table>
 
 <p>
     @Html.ActionLink("Registrar Nueva", "Create", null, new { @class = "btn btn-default" })
 </p>
+
+@section Scripts {
+    <script>
+        $(function () {
+
+            $('.lnk-delete').click(function () {
+
+                // La funcion confirm en JavaScript muestra un dialogo modal
+                // que solicita confirmacion al usuario (OK, CANCEL).
+                if (confirm('Esta seguro que desea eliminar esta persona? ' +
+                    'Esta accion no puede ser revertida')) {
+                    return true;
+                }
+
+                return false;
+
+            })
+
+        })
+    </script>    
+}

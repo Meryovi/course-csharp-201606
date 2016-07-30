@@ -205,6 +205,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Personas\Index.cshtml" />
     <Content Include="Views\Personas\Details.cshtml" />
+    <Content Include="Views\Personas\Create.cshtml" />
+    <Content Include="Views\Personas\_CreateEditForm.cshtml" />
+    <Content Include="Views\Personas\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
