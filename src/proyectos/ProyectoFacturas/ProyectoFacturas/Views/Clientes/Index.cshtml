@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoFacturas.Core.Modelos.Cliente>
+
+@{
+    ViewBag.Title = "Listado de Clientes";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>En esta opción se listan todos los clientes registrados en el sistema.</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExentoImpuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExentoImpuesto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Identificacion }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.Identificacion }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Identificacion })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p class="text-center">
+    @Html.ActionLink("Crear Nuevo Cliente", "Create", null, new { @class = "btn btn-primary" })
+</p>

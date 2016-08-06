@@ -1,0 +1,74 @@
+﻿@model ProyectoFacturas.Core.Modelos.Factura
+
+@{
+    ViewBag.Title = "Detalle de Factura";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Concepto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concepto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PorcentajeImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PorcentajeImpuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExentaImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExentaImpuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEmision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEmision)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

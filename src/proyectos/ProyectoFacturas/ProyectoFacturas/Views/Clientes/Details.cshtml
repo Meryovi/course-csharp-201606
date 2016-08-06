@@ -1,0 +1,50 @@
+﻿@model ProyectoFacturas.Core.Modelos.Cliente
+
+@{
+    ViewBag.Title = "Detalle de Cliente";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <h4>Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExentoImpuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExentoImpuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Identificacion }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
