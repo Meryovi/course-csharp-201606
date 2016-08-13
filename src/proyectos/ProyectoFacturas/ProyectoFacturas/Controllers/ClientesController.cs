@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoFacturas.Core.Modelos;
+using ProyectoFacturas.Core.Utils;
 using ProyectoFacturas.DataAccess.Repositorios;
 
 namespace ProyectoFacturas.Controllers
@@ -18,9 +19,14 @@ namespace ProyectoFacturas.Controllers
         }
 
         // GET: Clientes
-        public ActionResult Index()
+        public ActionResult Index(string q)
         {
-            var clientes = _clientes.BuscarTodos();
+            List<Cliente> clientes;
+
+            if (q == null)
+                clientes = _clientes.BuscarTodos();
+            else
+                clientes = _clientes.BuscarPorNombreIdentificacion(q);
 
             return View(clientes);
         }
@@ -51,6 +57,9 @@ namespace ProyectoFacturas.Controllers
         [HttpPost]
         public ActionResult Create(Cliente cliente)
         {
+            if (!ClientesUtils.EsCedulaValida(cliente.Identificacion))
+                ModelState.AddModelError("Identificacion", "La cédula digitada no es valida");
+
             try
             {
                 if (ModelState.IsValid)

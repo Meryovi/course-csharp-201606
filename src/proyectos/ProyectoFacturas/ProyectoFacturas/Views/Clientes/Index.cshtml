@@ -7,6 +7,22 @@
 <h2>@ViewBag.Title</h2>
 <p>En esta opción se listan todos los clientes registrados en el sistema.</p>
 
+<div class="row" style="padding-bottom: 5px">
+    <div class="col-md-6 col-md-offset-6 text-right">
+
+        @using (Html.BeginForm("Index", "Clientes", FormMethod.Get,
+            new { @class = "form-inline" }))
+        {
+            <div>
+                <input type="text" name="q" class="form-control input-sm"
+                       placeholder="Digite el nombre o la cedula..." />
+                <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+            </div>
+        }
+
+    </div>
+</div>
+
 <table class="table">
     <tr>
         <th>

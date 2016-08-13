@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using ProyectoFacturas.Core.Modelos;
+using ProyectoFacturas.Core.Utils;
 using ProyectoFacturas.DataAccess.EntityFramework;
 
 namespace ProyectoFacturas.DataAccess.Repositorios
@@ -31,6 +32,28 @@ namespace ProyectoFacturas.DataAccess.Repositorios
                 .SingleOrDefault(c => c.Identificacion == identificacion);
 
             return cliente;
+        }
+
+        public List<Cliente> BuscarPorNombreIdentificacion(string nombreIdentificacion)
+        {
+            List<Cliente> clientes;
+
+            // Si se especifico una cédula, buscamos por identificación.
+            if (ClientesUtils.EsCedulaValida(nombreIdentificacion))
+            {
+               clientes = _dbContext.Clientes
+                    .Where(c => c.Identificacion == nombreIdentificacion)
+                    .ToList();
+            }
+            else
+            {
+                // Si no se especifico una cédula, buscamos por nombre.
+                clientes = _dbContext.Clientes
+                    .Where(c => c.Nombre.Contains(nombreIdentificacion))
+                    .ToList();
+            }
+
+            return clientes;
         }
 
         public void Registrar(Cliente cliente)
