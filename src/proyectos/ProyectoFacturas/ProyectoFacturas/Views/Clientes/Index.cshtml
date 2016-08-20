@@ -54,10 +54,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaRegistro)
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Identificacion }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.Identificacion }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Identificacion })
+            <td class="text-right">
+                <small>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Identificacion }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.Identificacion }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Identificacion })
+                </small>
             </td>
         </tr>
     }

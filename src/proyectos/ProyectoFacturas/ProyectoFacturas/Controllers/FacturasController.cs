@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using ProyectoFacturas.Core.Modelos;
 using ProyectoFacturas.DataAccess.Repositorios;
@@ -15,9 +16,14 @@ namespace ProyectoFacturas.Controllers
         }
 
         // GET: Facturas
-        public ActionResult Index()
+        public ActionResult Index(string q)
         {
-            var facturas = _facturas.BuscarTodos();
+            List<Factura> facturas;
+
+            if (string.IsNullOrEmpty(q))
+                facturas = _facturas.BuscarTodos();
+            else
+                facturas = _facturas.BuscarPorNombreCliente(q);
 
             return View(facturas);
         }
@@ -114,6 +120,12 @@ namespace ProyectoFacturas.Controllers
             }
             
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _facturas.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

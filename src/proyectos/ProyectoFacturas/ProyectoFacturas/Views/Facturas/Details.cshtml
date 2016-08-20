@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Monto)
+            @Model.Monto.ToString("N2")
         </dd>
 
         <dt>
@@ -47,15 +47,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PorcentajeImpuesto)
+            @Model.PorcentajeImpuesto.ToString("N2") %
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ExentaImpuesto)
+            @Html.DisplayNameFor(model => model.MontoTotal)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ExentaImpuesto)
+            @Model.MontoTotal.ToString("N2")
         </dd>
 
         <dt>
@@ -63,7 +63,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaEmision)
+            @Model.FechaEmision.ToString("dd/MM/yyyy")
         </dd>
 
     </dl>

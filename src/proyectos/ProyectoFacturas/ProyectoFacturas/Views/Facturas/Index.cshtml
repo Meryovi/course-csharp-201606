@@ -5,9 +5,29 @@
 }
 
 <h2>@ViewBag.Title</h2>
+<p>En esta opción se listan todas las facturas registradas en el sistema.</p>
+
+<div class="row" style="padding-bottom: 5px">
+    <div class="col-md-6 col-md-offset-6 text-right">
+
+        @using (Html.BeginForm("Index", "Facturas", FormMethod.Get,
+                new { @class = "form-inline" }))
+        {
+            <div>
+                <input type="text" name="q" class="form-control input-sm"
+                       placeholder="Digite el nombre o la cedula..." />
+                <button type="submit" class="btn btn-primary btn-sm">Buscar</button>
+            </div>
+        }
+
+    </div>
+</div>
 
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdFormato)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Identificacion)
         </th>
@@ -18,7 +38,7 @@
             @Html.DisplayNameFor(model => model.Monto)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ExentaImpuesto)
+            @Html.DisplayNameFor(model => model.MontoTotal)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FechaEmision)
@@ -29,30 +49,35 @@
     @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.IdFormato)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Identificacion)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Concepto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Monto)
+                @item.Monto.ToString("N2")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ExentaImpuesto)
+                @item.MontoTotal.ToString("N2")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaEmision)
+                @item.FechaEmision.ToString("dd/MM/yyyy")
             </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
-                @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id=item.Id })
+            <td class="text-right">
+                <small>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                </small>
             </td>
         </tr>
     }
 
 </table>
 
-<p>
-    @Html.ActionLink("Crear Nueva Factura", "Create")
+<p class="text-center">
+    @Html.ActionLink("Crear Nueva Factura", "Create", null, new { @class = "btn btn-primary" })
 </p>

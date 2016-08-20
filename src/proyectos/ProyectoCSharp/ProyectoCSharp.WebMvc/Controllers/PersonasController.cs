@@ -19,7 +19,7 @@ namespace ProyectoCSharp.WebMvc.Controllers
         /// Instancia del repositorio de personas que creamos antes.
         /// Podemos reutilizar las clases creadas en el proyecto WinForms.
         /// </summary>
-        private RepositorioPersonasEF repositorioPersonas;
+        private readonly RepositorioPersonasEF repositorioPersonas;
 
         public PersonasController()
         {
@@ -108,6 +108,12 @@ namespace ProyectoCSharp.WebMvc.Controllers
             repositorioPersonas.EliminarPersona(id);
 
             return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            repositorioPersonas.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
