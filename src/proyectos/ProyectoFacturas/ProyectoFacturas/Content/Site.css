@@ -1,12 +1,29 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-position: top center;
+    background-image: url('Images/website-backgrounds-5.png');
+    background-size: 100px;
+}
+
+.navbar-brand {
+    /* Imagen del logo */
+    background-image: url('Images/invoices.png');
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 40px;
+}
+
+h2 {
+    color: #d9230f;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top: 40px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
