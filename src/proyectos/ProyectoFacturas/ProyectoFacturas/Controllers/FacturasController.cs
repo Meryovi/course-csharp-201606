@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using ProyectoFacturas.Core.Modelos;
 using ProyectoFacturas.DataAccess.Repositorios;
@@ -10,9 +11,12 @@ namespace ProyectoFacturas.Controllers
     {
         private readonly RepositorioFacturas _facturas;
 
+        private readonly RepositorioClientes _clientes;
+
         public FacturasController()
         {
             _facturas = new RepositorioFacturas();
+            _clientes = new RepositorioClientes();
         }
 
         // GET: Facturas
@@ -48,6 +52,8 @@ namespace ProyectoFacturas.Controllers
             factura.ExentaImpuesto = false;
             factura.FechaEmision = DateTime.Now;
 
+            CargarListasCreateEdit();
+
             return View(factura);
         }
 
@@ -57,6 +63,10 @@ namespace ProyectoFacturas.Controllers
         {
             try
             {
+                if (!_clientes.ValidarClienteExiste(factura.Identificacion))
+                    ModelState.AddModelError("Identificacion",
+                        "No existe un cliente con la identificación especificada");
+
                 if (ModelState.IsValid)
                 {
                     _facturas.Registrar(factura);
@@ -70,6 +80,8 @@ namespace ProyectoFacturas.Controllers
                 ModelState.AddModelError("", ex.Message);
             }
 
+            CargarListasCreateEdit();
+
             return View(factura);
         }
 
@@ -80,6 +92,8 @@ namespace ProyectoFacturas.Controllers
 
             if (factura == null)
                 return RedirectToAction("Index");
+
+            CargarListasCreateEdit();
 
             return View(factura);
         }
@@ -105,6 +119,8 @@ namespace ProyectoFacturas.Controllers
                 ModelState.AddModelError("", ex.Message);
             }
 
+            CargarListasCreateEdit();
+
             return View(factura);
         }
 
@@ -122,9 +138,21 @@ namespace ProyectoFacturas.Controllers
             return RedirectToAction("Index");
         }
 
+        private void CargarListasCreateEdit()
+        {
+            ViewBag.Identificacion = _clientes.BuscarTodos()
+                .Select(c => new SelectListItem()
+                {
+                    Value = c.Identificacion,
+                    Text = c.Nombre
+                });
+        }
+
         protected override void Dispose(bool disposing)
         {
             _facturas.Dispose();
+            _clientes.Dispose();
+
             base.Dispose(disposing);
         }
     }

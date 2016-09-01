@@ -16,7 +16,7 @@ namespace ProyectoFacturas.Core.Modelos
 
         [Required]
         [MaxLength(20)]
-        [Display(Name = "Identificación del Cliente")]
+        [Display(Name = "Cliente")]
         public string Identificacion { get; set; }
 
         [Required]
@@ -26,6 +26,7 @@ namespace ProyectoFacturas.Core.Modelos
         [MaxLength(300)]
         public string Detalles { get; set; }
         
+        [Range(1, 100000000)]
         public decimal Monto { get; set; }
 
         [Display(Name = "Porcentaje de Impuesto")]

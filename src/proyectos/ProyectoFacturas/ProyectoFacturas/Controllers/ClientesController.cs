@@ -60,6 +60,10 @@ namespace ProyectoFacturas.Controllers
             if (!ClientesUtils.EsCedulaValida(cliente.Identificacion))
                 ModelState.AddModelError("Identificacion", "La cédula digitada no es valida");
 
+            if (_clientes.ValidarClienteExiste(cliente.Identificacion))
+                ModelState.AddModelError("Identificacion",
+                    "Existe otro cliente con la identificación especificada");
+
             try
             {
                 if (ModelState.IsValid)

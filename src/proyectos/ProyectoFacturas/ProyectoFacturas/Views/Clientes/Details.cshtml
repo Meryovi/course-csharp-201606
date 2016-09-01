@@ -46,5 +46,6 @@
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.Identificacion }) |
-    @Html.ActionLink("Regresar", "Index")
+    @Html.ActionLink("Regresar", "Index") |
+    @Html.ActionLink("Ver Facturas", "Index", "Facturas", new { q = Model.Identificacion }, null)
 </p>

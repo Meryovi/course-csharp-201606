@@ -17,6 +17,14 @@ namespace ProyectoFacturas.DataAccess.Repositorios
             _dbContext = new FacturasDbContext();
         }
 
+        public bool ValidarClienteExiste(string identificacion)
+        {
+            bool clienteExiste = _dbContext.Clientes
+                .Any(c => c.Identificacion == identificacion);
+
+            return clienteExiste;
+        }
+
         public List<Cliente> BuscarTodos()
         {
             var clientes = _dbContext.Clientes
