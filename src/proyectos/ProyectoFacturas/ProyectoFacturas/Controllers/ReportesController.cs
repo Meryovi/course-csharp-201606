@@ -20,5 +20,12 @@ namespace ProyectoFacturas.Controllers
 
             return View(consolidado);
         }
+
+        public ActionResult ConsolidadoFechas()
+        {
+            var consolidado = _facturas.ReporteConsolidadoFechas();
+
+            return View(consolidado);
+        }
     }
 }

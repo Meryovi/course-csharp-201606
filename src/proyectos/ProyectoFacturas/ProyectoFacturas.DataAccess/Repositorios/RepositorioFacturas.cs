@@ -94,6 +94,17 @@ namespace ProyectoFacturas.DataAccess.Repositorios
             return consolidado;
         }
 
+        public IEnumerable<IGrouping<DateTime, Factura>>
+            ReporteConsolidadoFechas()
+        {
+            var consolidado = _dbContext.Facturas
+                .OrderByDescending(f => f.FechaEmision)
+                .ToList() // Hace que EntityFramework ejecute el query con las instrucciones previas.
+                .GroupBy(f => f.FechaEmision.Date); // .Date se utiliza para que la fecha pierda horas y minutos.
+
+            return consolidado;
+        }
+
         public void Dispose()
         {
             _dbContext.Dispose();

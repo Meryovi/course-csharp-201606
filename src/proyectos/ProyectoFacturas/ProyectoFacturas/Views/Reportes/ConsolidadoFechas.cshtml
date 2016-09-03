@@ -1,14 +1,14 @@
 ﻿@using ProyectoFacturas.Core.Modelos
 
-@model IEnumerable<IGrouping<Cliente, Factura>>
+@model IEnumerable<IGrouping<DateTime, Factura>>
 
 @{
-    ViewBag.Title = "Reporte Consolidado por Cliente";
+    ViewBag.Title = "Reporte Consolidado por Fechas";
 }
 
 <h2>@ViewBag.Title</h2>
 <p>
-    Reporte de facturas consolidado por cliente.
+    Reporte de facturas consolidado por fecha de emisi&oacute;n.
     Generado en fecha @DateTime.Now.ToString()
 </p>
 
@@ -26,7 +26,7 @@
             <th>Número de Factura</th>
             <th>Monto</th>
             <th>Total</th>
-            <th>Fecha</th>
+            <th>Cliente</th>
         </tr>
     </thead>
     <tbody>
@@ -34,7 +34,7 @@
         {
             <tr>
                 <th colspan="4" class="table-header">
-                    @grupo.Key.Nombre, @grupo.Key.Identificacion
+                    @grupo.Key.ToString("dddd, dd \\d\\e MMMM \\d\\e\\l yyyy")
                 </th>
             </tr>
             foreach (var factura in grupo)
@@ -43,7 +43,7 @@
                     <td>@factura.IdFormato</td>
                     <td>@factura.Monto.ToString("N2")</td>
                     <td>@factura.MontoTotal.ToString("N2")</td>
-                    <td>@factura.FechaEmision.ToString("dd/MM/yyyy")</td>
+                    <td>@factura.Cliente.Nombre</td>
                 </tr>
             }
             <tr>

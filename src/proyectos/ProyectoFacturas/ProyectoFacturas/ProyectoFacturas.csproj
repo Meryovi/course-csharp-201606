@@ -221,6 +221,7 @@
     <Content Include="Views\Facturas\Details.cshtml" />
     <Content Include="Views\Reportes\Index.cshtml" />
     <Content Include="Views\Reportes\ConsolidadoCliente.cshtml" />
+    <Content Include="Views\Reportes\ConsolidadoFechas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
