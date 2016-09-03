@@ -19,6 +19,10 @@ h2 {
     color: #d9230f;
 }
 
+.table-header {
+    background-color: #E5E5E5;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
@@ -38,4 +42,13 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+@media print {
+    .seccion-print {
+        display: none;
+    }
+    body {
+        padding-top: 0;
+    }
 }

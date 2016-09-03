@@ -83,6 +83,17 @@ namespace ProyectoFacturas.DataAccess.Repositorios
             return registros > 0;
         }
 
+        public IEnumerable<IGrouping<Cliente, Factura>>
+            ReporteConsolidadoCliente()
+        {
+            var consolidado = _dbContext.Facturas
+                .Include("Cliente") // Esto permite incluir el cliente en la consulta.
+                .OrderBy(f => f.Cliente.Identificacion)
+                .GroupBy(f => f.Cliente);
+
+            return consolidado;
+        }
+
         public void Dispose()
         {
             _dbContext.Dispose();

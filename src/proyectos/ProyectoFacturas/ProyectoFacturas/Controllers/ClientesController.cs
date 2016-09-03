@@ -9,15 +9,8 @@ using ProyectoFacturas.DataAccess.Repositorios;
 
 namespace ProyectoFacturas.Controllers
 {
-    public class ClientesController : Controller
+    public class ClientesController : BaseController
     {
-        private readonly RepositorioClientes _clientes;
-
-        public ClientesController()
-        {
-            _clientes = new RepositorioClientes();
-        }
-
         // GET: Clientes
         public ActionResult Index(string q)
         {
@@ -129,12 +122,6 @@ namespace ProyectoFacturas.Controllers
             }
             
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _clientes.Dispose();
-            base.Dispose(disposing);
         }
     }
 }

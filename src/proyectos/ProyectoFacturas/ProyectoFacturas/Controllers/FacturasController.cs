@@ -7,18 +7,8 @@ using ProyectoFacturas.DataAccess.Repositorios;
 
 namespace ProyectoFacturas.Controllers
 {
-    public class FacturasController : Controller
+    public class FacturasController : BaseController
     {
-        private readonly RepositorioFacturas _facturas;
-
-        private readonly RepositorioClientes _clientes;
-
-        public FacturasController()
-        {
-            _facturas = new RepositorioFacturas();
-            _clientes = new RepositorioClientes();
-        }
-
         // GET: Facturas
         public ActionResult Index(string q)
         {
@@ -146,14 +136,6 @@ namespace ProyectoFacturas.Controllers
                     Value = c.Identificacion,
                     Text = c.Nombre
                 });
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            _facturas.Dispose();
-            _clientes.Dispose();
-
-            base.Dispose(disposing);
         }
     }
 }

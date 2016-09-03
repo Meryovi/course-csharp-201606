@@ -1,0 +1,58 @@
+﻿@using ProyectoFacturas.Core.Modelos
+
+@model IEnumerable<IGrouping<Cliente, Factura>>
+
+@{
+    ViewBag.Title = "Reporte Consolidado por Cliente";
+}
+
+
+<h2>@ViewBag.Title</h2>
+<p>
+    Reporte de facturas consolidado por cliente.
+    Generado en fecha @DateTime.Now.ToString().
+</p>
+
+<div class="seccion-print text-right">
+    <button class="btn btn-default" onclick="window.print()">
+        Imprimir
+    </button>
+</div>
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Número de Factura</th>
+            <th>Monto</th>
+            <th>Total</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var grupo in Model)
+        {
+            <tr>
+                <th colspan="4" class="table-header">
+                    @grupo.Key.Nombre, @grupo.Key.Identificacion
+                </th>
+            </tr>
+            foreach (var factura in grupo)
+            {
+                <tr>
+                    <td>@factura.IdFormato</td>
+                    <td>@factura.Monto.ToString("N2")</td>
+                    <td>@factura.MontoTotal.ToString("N2")</td>
+                    <td>@factura.FechaEmision.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+            <tr>
+                <td>Total facturado:</td>
+                <th>@grupo.Sum(f => f.Monto).ToString("N2")</th>
+                <th>@grupo.Sum(f => f.MontoTotal).ToString("N2")</th>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

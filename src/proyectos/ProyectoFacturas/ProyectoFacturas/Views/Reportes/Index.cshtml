@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<h2>Reportes</h2>
+<p>Listado de reportes disponibles en el sistema.</p>
+
+<hr />
+
+<h4>Reportes de Facturas</h4>
+<ul>
+    <li>
+        @Html.ActionLink(
+            "Reporte consolidado por cliente",
+            "ConsolidadoCliente")
+    </li>
+</ul>
